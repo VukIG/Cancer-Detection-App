@@ -1,20 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
+import { SafeAreaView, View } from 'react-native';
+import Welcome from './components/Welcome';
+import Footer from './components/Footer';
+import ImageButtons from './components/ImageButtons';
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={{ flex: 1 }}> 
+      <View style={{justifyContent: 'space-aroun'}}>
+        <Welcome />
+        <ImageButtons />
+      </View>
+      <Footer />      
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
