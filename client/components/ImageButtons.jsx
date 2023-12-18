@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons'; 
 import * as ImagePicker from 'expo-image-picker';
-function ImageButtons() {
-    const [image,setImage] = useState(null);
-    const [cameraPermission,setCameraPermission] = useState(null);
-    const [galleryPermission,setGalleryPermission] = useState(null);
+
+function ImageButtons({image, setImage}) {
+    const [cameraPermission,setCameraPermission] = useState(true);
+    const [galleryPermission,setGalleryPermission] = useState(true);
 
     const grabFromLibrary = async () => {
       const galleryStatus = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -19,7 +19,7 @@ function ImageButtons() {
     
         console.log(result);
     
-        if (!result.canceled) {
+        if (!result.canceled && result.assets && result.assets.length > 0) {
           setImage(result.assets[0].uri);
         }
       }
@@ -37,10 +37,8 @@ function ImageButtons() {
           aspect: [1, 1],
           quality: 1,
         });
-    
-        console.log(result);
-    
-        if (!result.canceled) {
+
+        if (!result.canceled && result.assets && result.assets.length > 0) {
           setImage(result.assets[0].uri);
         }
       }
@@ -66,10 +64,10 @@ function ImageButtons() {
             </TouchableOpacity>
         </View>
         {
-          cameraPermission && <Text style={styles.errorText}> You need to grant accsess to the camera </Text>
+          !cameraPermission && <Text style={styles.errorText}> You need to grant accsess to the camera </Text>
         }
         {
-          galleryPermission && <Text> You need to grant accsess to galery </Text>
+          !galleryPermission && <Text style={styles.errorText}> You need to grant accsess to galery </Text>
         }
     </View>
   );
@@ -78,7 +76,7 @@ function ImageButtons() {
 const styles = StyleSheet.create({
   buttonsPosition:{
     position:'absolute',
-    top:'240%',
+    top: '240%',
     left:'37%',
     transform: [{ translateX: -115 }],
   },
@@ -105,7 +103,7 @@ const styles = StyleSheet.create({
   },
   errorText:{
     color:'red'
-  }
+  },
 });
 
 export default ImageButtons;

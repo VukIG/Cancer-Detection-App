@@ -6,7 +6,7 @@ function Welcome() {
     <View style={styles.center}>
       <Text style={styles.title}>Welcome to CDA</Text>
       <Text style={styles.description}>
-        Scan your nevus with your phone's camera and check if it's benign or malignant
+        Scan your naevus with your phone's camera and check if it's benign or malignant
       </Text>
     </View>
   );
