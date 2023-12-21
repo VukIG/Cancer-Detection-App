@@ -1,6 +1,6 @@
 import tensorflow as tf
 import os
-from pre_processing import test_dataset, train_dataset, validation_dataset, img_width, img_height, batch_size
+from pre_processing import train_dataset, validation_dataset, img_width, img_height, batch_size
 
 validation_size=988
 train_size=7993
@@ -53,4 +53,4 @@ else:
     )
 
     model.save("Cancer-detection-model");
-    loaded_model = tf.keras.models.load_model("Cancer-detection-model.h5")
+    loaded_model = tf.keras.models.load_model("Cancer-detection-model")

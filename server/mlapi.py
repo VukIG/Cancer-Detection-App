@@ -8,7 +8,7 @@ app = FastAPI()
 class ModelPrediction(BaseModel):  # Corrected the class name
     benign: int
 
-with open('rfmodel.pkl', 'rb') as f:
+with open('./model/saved_model.pb', 'pb') as f:
     model = pickle.load(f)
 
 @app.get('/')
