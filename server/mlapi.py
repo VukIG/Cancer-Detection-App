@@ -1,18 +1,44 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, File, UploadFile
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
-import pickle
-import pandas as pd
+import tensorflow as tf
+from PIL import Image
+import numpy as np
 
 app = FastAPI()
 
-class ModelPrediction(BaseModel):  # Corrected the class name
-    benign: int
+class PatientInfo(BaseModel):
+    image: str
 
-with open('./model/saved_model.pb', 'pb') as f:
-    model = pickle.load(f)
+# Load your cancer detection model only once when the app starts
+saved_model_path = '/home/vuk/Documents/ML/Cancer-Detection-AI/Cancer-detection-model'
+model = tf.saved_model.load(saved_model_path)
+
+@app.post('/predict')
+async def predict_cancer(patient_info: PatientInfo):
+    image_uri = patient_info.image
+    image_data = process_image(image_uri)
+
+    if image_data is None:
+        return JSONResponse(content={"error": "Invalid image URI"}, status_code=400)
+
+    try:
+        # Assuming your model expects a numpy array
+        img_input = np.reshape(image_data, (1, image_data.shape[0], image_data.shape[1], image_data.shape[2]))
+        prediction = model.predict(img_input)
+        return {"prediction": int(prediction[0])}
+    except Exception as e:
+        return JSONResponse(content={"error": f"Error during prediction: {e}"}, status_code=500)
+
+def process_image(image_uri: str):
+    try:
+        img = Image.open(image_uri)
+        img_array = np.array(img)
+        return img_array
+    except Exception as e:
+        print(f"Error processing image: {e}")
+        return None
 
 @app.get('/')
-async def scoring_endpoint(prediction: ModelPrediction):  # Corrected the function parameter name
-    df = pd.DataFrame([prediction.model_dump().values()], columns=prediction.model_dump().keys())  # Corrected the variable name
-    yhat = model.predict(df)
-    return {"prediction": int(yhat)}
+def index():
+    return {'message': 'Amenelibockura'}

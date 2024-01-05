@@ -1,36 +1,42 @@
-import React from 'react';
-import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
-import { Linking } from 'react-native';
+import React from "react";
+import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
+import { Linking } from "react-native";
 
 function Footer() {
   return (
     <View style={styles.footerContainer}>
-        <View style={styles.flexContainer}>
-          <Text style={styles.textStyle}>Made by Vuk Ignjatovic</Text>
-          <TouchableOpacity onPress={() => Linking.openURL('https://www.linkedin.com/in/vuk-ignjatovic-53152a248/')}>
-            <AntDesign name="linkedin-square" size={24} color="white" />
-          </TouchableOpacity>
-        </View>
+      <View style={styles.flexContainer}>
+        <Text style={styles.textStyle}>Made by Vuk Ignjatovic</Text>
+        <TouchableOpacity
+          onPress={() =>
+            Linking.openURL(
+              "https://www.linkedin.com/in/vuk-ignjatovic-53152a248/",
+            )
+          }
+        >
+          <AntDesign name="linkedin-square" size={24} color="white" />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   footerContainer: {
-    backgroundColor: '#4a90e2',
+    backgroundColor: "#4a90e2",
     padding: 10,
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
-    width: '100%',
+    width: "100%",
   },
   flexContainer: {
-    flexDirection:'row',
-    justifyContent:'center',
-    alignItems:'center',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
   textStyle: {
-    color: 'white',
+    color: "white",
     marginRight: 10,
   },
 });
