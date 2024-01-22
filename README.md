@@ -43,22 +43,25 @@ Happy Coding! 🚀👩‍💻👨‍💻
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/skin-cancer-recognition-app.git
+    git clone https://github.com/VukIG/Cancer-Detection-App.git
     ```
 
 2. Install dependencies:
 
     ```bash
-    cd skin-cancer-recognition-app
+    cd Cancer-Detection-App
     npm install
     ```
 
-3. Run the app:
+3. Run the app and Scan the QR code with the Expo app from Play Store :
 
     ```bash
-    npx react-native run-android
-    # or
-    npx react-native run-ios
+    npx expo start --tunnel
+    ```
+4. Run the app on your emulator ( Optional if you don't want to use the expo app ):
+    Press w for web, a for android emulator ( Requires the AndroidSDK setup ) or i for ios emulator ( requires xcode )
+    ```bash
+    
     ```
 ## How to Contribute
 Feel free to fork the repository and contribute to the development. Your suggestions and enhancements are more than welcome! 🙌
