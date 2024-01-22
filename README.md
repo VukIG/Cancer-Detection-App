@@ -59,9 +59,8 @@ Happy Coding! 🚀👩‍💻👨‍💻
     npx expo start --tunnel
     ```
 4. Run the app on your emulator ( Optional if you don't want to use the expo app ):
-    Press w for web, a for android emulator ( Requires the AndroidSDK setup ) or i for ios emulator ( requires xcode )
     ```bash
-    
+    Press w for web, a for android emulator ( Requires the AndroidSDK setup ) or i for ios emulator ( requires xcode )    
     ```
 ## How to Contribute
 Feel free to fork the repository and contribute to the development. Your suggestions and enhancements are more than welcome! 🙌
