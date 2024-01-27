@@ -1,7 +1,8 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import GlobalStyles from "./GlobalStyles";
+import { useRef } from "react";
+import GlobalStyles from "../../GlobalStyles";
 import { LinearGradient } from "expo-linear-gradient";
-import WelcomeSvg from "../assets/welcome.svg";
+import WelcomeSvg from "../../../assets/welcome.svg";
 
 export default function WelcomeSlide() {
   return (
@@ -13,7 +14,7 @@ export default function WelcomeSlide() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna.
         </Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={nextSlide}>
           <LinearGradient
             colors={["#5EA8FF", "#42C5FD"]}
             style={GlobalStyles.buttonPrimary}

@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-import SlideViewer from "./SlideViewer";
+import SlideViewer from "./screens/SlideViewer";
 
 const Stack = createNativeStackNavigator();
 

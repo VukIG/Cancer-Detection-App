@@ -1,14 +1,14 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import GlobalStyles from "./GlobalStyles";
+import GlobalStyles from "../../GlobalStyles";
 import { LinearGradient } from "expo-linear-gradient";
-import AllowCameraSvg from "../assets/allowcamera.svg";
+import AllowGallerySvg from "../../../assets/allowgallery.svg";
 
-export default function AllowCameraSlide() {
+export default function AllowGallerySlide() {
   return (
     <View style={GlobalStyles.container}>
-      <AllowCameraSvg width={350} height={350} style={GlobalStyles.svg} />
+      <AllowGallerySvg width={350} height={350} style={GlobalStyles.svg} />
       <View style={GlobalStyles.content}>
-        <Text style={GlobalStyles.title}>Allow your camera</Text>
+        <Text style={GlobalStyles.title}>Allow your gallery</Text>
         <Text style={GlobalStyles.subtitle}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna.
@@ -18,7 +18,7 @@ export default function AllowCameraSlide() {
           style={GlobalStyles.buttonPrimary}
         >
           <TouchableOpacity>
-            <Text style={GlobalStyles.buttonPrimary.text}>Enable Camera</Text>
+            <Text style={GlobalStyles.buttonPrimary.text}>Enable Gallery</Text>
           </TouchableOpacity>
         </LinearGradient>
         <TouchableOpacity style={GlobalStyles.buttonSecondary}>

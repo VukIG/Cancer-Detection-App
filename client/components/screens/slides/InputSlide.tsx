@@ -1,14 +1,14 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import GlobalStyles from "./GlobalStyles";
+import GlobalStyles from "../../GlobalStyles";
 import { LinearGradient } from "expo-linear-gradient";
-import CameraIconSvg from "../assets/camera-icon.svg";
-import GalleryIconSvg from "../assets/gallery-icon.svg";
+import CameraIconSvg from "../../../assets/camera-icon.svg";
+import GalleryIconSvg from "../../../assets/gallery-icon.svg";
 
 export default function InputSlide() {
   return (
     <View style={GlobalStyles.container}>
       <View style={GlobalStyles.content}>
-        <Text style={GlobalStyles.title}>Welcome to CDA!</Text>
+        <Text style={GlobalStyles.title}>Let's start!</Text>
         <Text style={GlobalStyles.subtitle}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna.
@@ -18,17 +18,20 @@ export default function InputSlide() {
         style={{
           ...GlobalStyles.content,
           flexDirection: "row",
-          alignItems: "center",
         }}
       >
         <LinearGradient
           colors={["#5EA8FF", "#42C5FD"]}
-          style={{ ...GlobalStyles.buttonPrimary, width: 150 }}
+          style={{ ...GlobalStyles.buttonPrimary, width: 155 }}
         >
           <TouchableOpacity
-            style={{ flexDirection: "row", justifyContent: "center" }}
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-around",
+              alignItems: "center",
+            }}
           >
-            <CameraIconSvg width={25} height={25} style={{}} />
+            <CameraIconSvg width={25} height={25} />
             <Text style={GlobalStyles.buttonPrimary.text}>Take a picture</Text>
           </TouchableOpacity>
         </LinearGradient>
@@ -37,11 +40,12 @@ export default function InputSlide() {
           style={{
             ...GlobalStyles.buttonSecondary,
             flexDirection: "row",
-            justifyContent: "center",
-            width: 150,
+            justifyContent: "space-around",
+            alignItems: "center",
+            width: 155,
           }}
         >
-          <GalleryIconSvg width={25} height={25} style={{}} />
+          <GalleryIconSvg width={25} height={25} />
           <Text style={GlobalStyles.buttonSecondary.text}>Open gallery</Text>
         </TouchableOpacity>
       </View>
