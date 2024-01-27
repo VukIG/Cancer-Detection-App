@@ -6,9 +6,14 @@ const { width, height } = Dimensions.get("window");
 const GlobalStyles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "flex-start",
+    justifyContent: "space-between",
+    padding: 20,
+  },
+
+  content: {
+    flex: 1,
     alignItems: "center",
-    padding: width * 0.05,
+    justifyContent: "center",
   },
 
   subtitle: {
@@ -16,27 +21,27 @@ const GlobalStyles = StyleSheet.create({
     color: "#695D5D",
     fontSize: 15,
     textAlign: "center",
-    marginTop: height * 0.01,
     lineHeight: 20,
+    margin: 10,
   },
 
   title: {
     fontFamily: "System",
     color: "#2B8CFF",
     fontSize: 32,
-    marginTop: height * 0.05,
+    textAlign: "center",
+    margin: 10,
   },
 
-  svg: {
-    margin: height * 0.05,
-  },
+  svg: {},
 
   buttonPrimary: {
-    marginTop: height * 0.075,
     width: 195,
     height: 50,
+    margin: 20,
     borderRadius: 10,
     justifyContent: "center",
+
     text: {
       color: "white",
       fontWeight: "bold",
@@ -46,11 +51,10 @@ const GlobalStyles = StyleSheet.create({
   },
 
   buttonSecondary: {
-    marginTop: height * 0.01,
-    borderWidth: 10,
-    borderColor: "#5EA8FF",
     width: 195,
     height: 50,
+    borderWidth: 1,
+    borderColor: "#5EA8FF",
     borderRadius: 10,
     justifyContent: "center",
     text: {

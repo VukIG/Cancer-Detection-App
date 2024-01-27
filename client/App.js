@@ -1,9 +1,15 @@
-import { View, Image, StyleSheet } from "react-native";
-import { useState } from "react";
-import AllowCameraSlide from "./components/AllowCameraSlide";
+import { NavigationContainer } from "@react-navigation/native"; 
+import { View, Text } from "react-native";
+import React from "react";
+import WelcomeSlide from "./components/WelcomeSlide";
+import MyStack from "./components/Navigator";
 
-export default function App() {
+function App() {
   return (
-    <AllowCameraSlide />
+    <NavigationContainer>
+      <MyStack />
+    </NavigationContainer>
   );
-} 
+}
+
+export default App;
