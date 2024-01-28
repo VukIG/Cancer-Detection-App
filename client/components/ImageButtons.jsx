@@ -8,8 +8,7 @@ function ImageButtons({ image, setImage }) {
   const [galleryPermission, setGalleryPermission] = useState(true);
 
   const grabFromLibrary = async () => {
-    const galleryStatus =
-      await ImagePicker.requestMediaLibraryPermissionsAsync();
+    const galleryStatus = await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (galleryStatus.status == "granted") {
       let result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.All,

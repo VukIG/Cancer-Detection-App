@@ -1,4 +1,6 @@
 from fastapi import FastAPI, File, UploadFile
+from fastapi.middleware.cors import CORSMiddleware
+
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 import tensorflow as tf
@@ -9,6 +11,17 @@ app = FastAPI()
 
 class PatientInfo(BaseModel):
     image: str
+
+#CORS ERRORI SKINUTI
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 # Load your cancer detection model only once when the app starts
 saved_model_path = '/home/vuk/Documents/ML/Cancer-Detection-AI/Cancer-detection-model'
@@ -24,7 +37,7 @@ async def predict_cancer(patient_info: PatientInfo):
 
     try:
         # Assuming your model expects a numpy array
-        img_input = np.reshape(image_data, (1, image_data.shape[0], image_data.shape[1], image_data.shape[2]))
+        img_input = np.array.reshape(image_data, (1, image_data.shape[0], image_data.shape[1], image_data.shape[2]))
         prediction = model.predict(img_input)
         return {"prediction": int(prediction[0])}
     except Exception as e:
@@ -33,8 +46,8 @@ async def predict_cancer(patient_info: PatientInfo):
 def process_image(image_uri: str):
     try:
         img = Image.open(image_uri)
-        img_array = np.array(img)
-        return img_array
+        img_input = np.reshape(img, (1, img.shape[0], img.shape[1], img.shape[2]))
+        return img_input
     except Exception as e:
         print(f"Error processing image: {e}")
         return None

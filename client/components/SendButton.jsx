@@ -10,7 +10,7 @@ function SendButton({ image, prediction,setPrediction }) {
     });
   const sendToServer = async () => {
     axios
-      .post("http://127.0.0.1:8000/predict/", formData)
+      .post("http://192.168.1.6:8000/predict", formData)
       .then((response) => {
         setPrediction(response);
       })
